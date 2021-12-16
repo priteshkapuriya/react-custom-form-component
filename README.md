@@ -20,7 +20,7 @@ npm start
 ```
 
 ## **ThoughtProcessForAPI**
-I choose this API because I wanted to give complete control to user on passing input as per their convienience and also it is very easy to extend and very flexible in-terms of inputs.
+I choose this API because I wanted to give complete control to user on passing input as per their convenience and also it is very easy to extend and very flexible in-terms of inputs.
 
 ## API
 
