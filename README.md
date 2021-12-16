@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+Source with example to create generic React forms.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Table of Contents
 
-## Available Scripts
+- [Getting started](#getting-started)
+- [API](#api)
+  - [Form](#form)
+  - [formData](#formData)
+  - [Sample-formData-Object](#Sample formData Object and form component)
 
-In the project directory, you can run:
+## Getting started.
 
-### `yarn start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## API
 
-### `yarn test`
+### **Form**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`<Form />` component returns a controlled form that wraps input and states.
 
-### `yarn build`
+**Props**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`handleSubmit` (required): A function to handle the values when a form is submitted. This function will receive the values from the form as an object where the keys will be the name of each field.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`formData` : (required): An object array containing details about how form will looks like more details.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **formData**
 
-### `yarn eject`
+**Options**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`name` : (required): A string that defines the name of the input. This prop is what connects your input with the form state.
+`label`: (required): A string for the label of your input.
+`validationRules` : (optional): List of Validations that you would like on your input (currently in-built validationRules are required, requiredName, minLength, maxLength)
+`customValidationRules` : (optional): If in-built doesn't suits your need, you can use this option where you pass your custom validator function and string to display when that validator is successful, library will gladly run it for you.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Sample formData Object and form component**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```JSX
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+function numberCheck(inputVal) {
+  if (!isNaN(inputVal) && inputVal.length > 0) { return true }
+  else { return false }
+}
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const formData = [
+  {
+    name: "firstName",
+    label: "First Name",
+    validationRules: ["required", "requiredName:wooga.name"]
+  },
+  {
+    name: "lastName",
+    label: "Last Name",
+    validationRules: ["minlength: 3", "maxlength: 20"]
+  },
+  {
+    name: "num",
+    label: "Number",
+    customValidationRules: [
+      {
+        message: "should contain only numbers",
+        func: numberCheck
+      }
+    ]
+  }
+]
+<Form handleSubmit={handleSubmit} formData={formData} />
+```
