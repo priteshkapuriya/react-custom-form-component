@@ -3,6 +3,7 @@ Source with example to create generic React forms.
 # Table of Contents
 
 - [Getting started](#getting-started)
+- [ThoughtProcessForAPI](#thoughtProcessForAPI)
 - [API](#api)
   - [Form](#form)
   - [formData](#formData)
@@ -17,6 +18,9 @@ npm install
 ```bash
 npm start
 ```
+
+## **ThoughtProcessForAPI**
+I choose this API because I wanted to give complete control to user on passing input as per their convienience and also it is very easy to extend and very flexible in-terms of inputs.
 
 ## API
 
@@ -38,7 +42,7 @@ npm start
 `label`: (required): A string for the label of your input.\
 `defaultValue`: (optional): A string which will populate defaultValue passed for the input.\
 `validationRules` : (optional): List of Validations that you would like on your input (currently in-built validationRules are required, requiredName, minLength, maxLength)\
-`customValidationRules` : (optional): If in-built doesn't suits your need, you can use this option where you pass your custom validator function and string to display when that validator is successful, library will gladly run it for you.\
+`customValidationRules` : (optional): If in-built doesn't suits your need, you can use this option where you pass your custom validator function and string to display when that validator is successful, library will gladly run it for you.
 
 ### **Sample-formData-Object-and-form-component**
 
