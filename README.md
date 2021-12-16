@@ -36,6 +36,7 @@ npm start
 
 `name` : (required): A string that defines the name of the input. This prop is what connects your input with the form state.
 `label`: (required): A string for the label of your input.
+`defaultValue`: (optional): A string which will populate defaultValue passed for the input.
 `validationRules` : (optional): List of Validations that you would like on your input (currently in-built validationRules are required, requiredName, minLength, maxLength)
 `customValidationRules` : (optional): If in-built doesn't suits your need, you can use this option where you pass your custom validator function and string to display when that validator is successful, library will gladly run it for you.
 
